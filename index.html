@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NightWalker — Mohammed Rinshan</title>
+<meta name="description" content="Self-taught developer and aspiring ethical hacker, building Android &amp; Flutter apps entirely from a single phone. Malappuram, Kerala.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0c111d;
+    --panel: #131a2b;
+    --panel-alt: #1a2338;
+    --hairline: rgba(234,238,247,0.09);
+    --text: #e9edf6;
+    --muted: #8b93ac;
+    --signal: #ffb454;
+    --signal-dim: rgba(255,180,84,0.14);
+    --path: #5eead4;
+    --path-dim: rgba(94,234,212,0.14);
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 600px at 12% -10%, rgba(94,234,212,0.07), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, rgba(255,180,84,0.06), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Sora',sans-serif;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--signal); outline-offset:3px; border-radius:4px;}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:rgba(12,17,29,0.75); border-bottom:1px solid var(--hairline);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Sora',sans-serif; font-weight:700; letter-spacing:0.02em; font-size:1.05rem;}
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--signal); box-shadow:0 0 10px var(--signal); flex-shrink:0;}
+  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav a{text-decoration:none; color:var(--muted); font-size:0.92rem; font-weight:500; transition:color 0.2s;}
+  nav a:hover{color:var(--text);}
+  .nav-links{display:flex;}
+  @media (max-width:720px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{padding:90px 0 70px; position:relative; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr; gap:48px;} }
+
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--path); background:var(--path-dim); border:1px solid rgba(94,234,212,0.25); padding:6px 12px; border-radius:100px; margin-bottom:22px;}
+  .hero h1{font-size:clamp(2.1rem, 5vw, 3.4rem); font-weight:800; line-height:1.08; margin:0 0 20px; letter-spacing:-0.01em;}
+  .hero h1 .accent{color:var(--signal);}
+  .hero p.lede{color:var(--muted); font-size:1.08rem; max-width:52ch; margin:0 0 32px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:10px; font-weight:600; font-size:0.94rem; text-decoration:none; transition:transform 0.15s, box-shadow 0.15s, background 0.15s; border:1px solid transparent;}
+  .btn-primary{background:var(--signal); color:#191308;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(255,180,84,0.5);}
+  .btn-ghost{border-color:var(--hairline); color:var(--text); background:var(--panel);}
+  .btn-ghost:hover{border-color:rgba(94,234,212,0.4); transform:translateY(-2px);}
+
+  .stat-strip{display:flex; gap:28px; margin-top:40px; flex-wrap:wrap;}
+  .stat-strip div{min-width:110px;}
+  .stat-strip .num{font-family:'Sora',sans-serif; font-weight:700; font-size:1.5rem; color:var(--text);}
+  .stat-strip .lbl{font-size:0.78rem; color:var(--muted); margin-top:2px;}
+
+  /* PHONE TERMINAL - signature element */
+  .phone-wrap{display:flex; justify-content:center;}
+  .phone{
+    width:270px; border-radius:34px; padding:14px;
+    background:linear-gradient(160deg, #1c2540, #0f1522);
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 30px 70px -20px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.03);
+  }
+  .phone .notch{width:60px; height:6px; border-radius:6px; background:rgba(255,255,255,0.12); margin:0 auto 10px;}
+  .screen{
+    background:#080b13; border-radius:20px; padding:18px 16px; height:400px;
+    border:1px solid rgba(255,180,84,0.15);
+    box-shadow:inset 0 0 40px rgba(255,180,84,0.05);
+    display:flex; flex-direction:column;
+  }
+  .screen .bar{display:flex; gap:6px; margin-bottom:14px;}
+  .screen .bar span{width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.15);}
+  .term{font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--path); flex:1; overflow:hidden;}
+  .term .line{margin-bottom:9px; white-space:pre-wrap; word-break:break-word;}
+  .term .prompt{color:var(--signal);}
+  .cursor{display:inline-block; width:6px; height:12px; background:var(--signal); vertical-align:middle; animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .term .out{color:var(--muted);}
+  .battery-tag{margin-top:14px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--muted);}
+
+  section{padding:64px 0;}
+  .section-head{margin-bottom:36px;}
+  .section-head .kicker{font-family:'JetBrains Mono',monospace; font-size:0.76rem; color:var(--signal); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; display:block;}
+  .section-head h2{font-size:clamp(1.5rem,3vw,2rem); font-weight:700; margin:0;}
+  .section-head p{color:var(--muted); max-width:60ch; margin-top:10px;}
+
+  /* fade-in on scroll */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media (max-width:780px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:#c7cde0; margin:0 0 16px;}
+  .fact-card{background:var(--panel); border:1px solid var(--hairline); border-radius:var(--radius); padding:22px;}
+  .fact-card + .fact-card{margin-top:14px;}
+  .fact-card .k{font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--path); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;}
+  .fact-card .v{font-size:0.96rem; color:var(--text);}
+
+  /* TIMELINE */
+  .timeline{position:relative; padding-left:26px; border-left:1px solid var(--hairline);}
+  .tl-item{position:relative; padding-bottom:34px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:''; position:absolute; left:-31px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px var(--signal-dim);}
+  .tl-item .yr{font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--signal); margin-bottom:4px;}
+  .tl-item h3{margin:0 0 6px; font-size:1.05rem; font-weight:600;}
+  .tl-item p{margin:0; color:var(--muted); font-size:0.94rem; max-width:60ch;}
+
+  /* PROJECTS */
+  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  @media (max-width:780px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{background:var(--panel); border:1px solid var(--hairline); border-radius:var(--radius); padding:24px; transition:border-color 0.2s, transform 0.2s;}
+  .proj-card:hover{border-color:rgba(255,180,84,0.35); transform:translateY(-3px);}
+  .proj-card .tag{display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--path); background:var(--path-dim); padding:3px 9px; border-radius:100px; margin-bottom:14px;}
+  .proj-card h3{margin:0 0 8px; font-size:1.12rem;}
+  .proj-card p{color:var(--muted); font-size:0.92rem; margin:0 0 16px;}
+  .stack{display:flex; flex-wrap:wrap; gap:8px;}
+  .stack span{font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--muted); border:1px solid var(--hairline); padding:3px 8px; border-radius:6px;}
+
+  /* TOOLKIT */
+  .kit-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px;}
+  .kit-card{background:var(--panel-alt); border:1px solid var(--hairline); border-radius:12px; padding:16px; text-align:center; font-size:0.88rem; color:#d3d8e8;}
+
+  /* CONTACT */
+  .contact-box{background:linear-gradient(135deg, var(--panel), var(--panel-alt)); border:1px solid var(--hairline); border-radius:20px; padding:44px; text-align:center;}
+  .contact-box h2{margin:0 0 12px;}
+  .contact-box p{color:var(--muted); max-width:50ch; margin:0 auto 28px;}
+  .social-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+
+  footer{border-top:1px solid var(--hairline); padding:28px 0; text-align:center; color:var(--muted); font-size:0.82rem;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> NightWalker</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#toolkit">Toolkit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">● online from a single android device</span>
+      <h1>Building in the dark.<br>Shipping <span class="accent">anyway.</span></h1>
+      <p class="lede">I'm Mohammed Rinshan — known online as <strong>NightWalker</strong>. Plus Two humanities student from Malappuram, Kerala, teaching myself ethical hacking and app development on a 4GB RAM phone, with no laptop and no shortcuts.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">View GitHub →</a>
+        <a class="btn btn-ghost" href="#projects">See what I've built</a>
+      </div>
+      <div class="stat-strip">
+        <div><div class="num">10+ yrs</div><div class="lbl">chasing the dream, since std. 4</div></div>
+        <div><div class="num">4GB / 64GB</div><div class="lbl">the entire dev rig</div></div>
+        <div><div class="num">0</div><div class="lbl">laptops owned</div></div>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="bar"><span></span><span></span><span></span></div>
+          <div class="term" id="term"></div>
+        </div>
+        <div class="battery-tag">// one phone. no limits.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Who's behind the terminal</span>
+      <h2>Self-taught, phone-only, still shipping.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>Since 4th standard, the goal hasn't changed: become an ethical hacker. There was never a laptop to make that easier — just curiosity, patience, and whatever an unrooted Android phone would allow.</p>
+        <p>That constraint became a habit. I spend hours at a stretch going deep on one topic before moving to the next — security tooling, Android internals, Flutter, Kotlin — learning by doing rather than by having the "right" setup.</p>
+        <p>Today that same phone runs security tools, drives GitHub's web editor, and triggers Codemagic builds — the full pipeline for real, working apps, end to end.</p>
+      </div>
+      <div class="reveal">
+        <div class="fact-card"><div class="k">Base</div><div class="v">Malappuram, Kerala, India</div></div>
+        <div class="fact-card"><div class="k">Currently</div><div class="v">Plus Two — Humanities</div></div>
+        <div class="fact-card"><div class="k">Setup</div><div class="v">Android phone · 4GB RAM · 64GB storage · unrooted</div></div>
+        <div class="fact-card"><div class="k">Workflow</div><div class="v">GitHub (web) + Codemagic CI/CD — zero PC dependency</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">The long way in</span>
+      <h2>How it started, how it's going</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="yr">Standard 4</div>
+        <h3>The dream starts</h3>
+        <p>First encounter with the idea of "hacking" — no resources, no roadmap, just a decision that stuck for over a decade.</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">Since then</div>
+        <h3>Learning without the "right" gear</h3>
+        <p>Studying security concepts and running tools on an unrooted phone, piecing together knowledge without formal training or a PC.</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">Recently</div>
+        <h3>From learning to shipping</h3>
+        <p>Started building real, working Android and Flutter apps — TG Streamer, NW CyberSafeHub, and the NW Parental / NW Child system — using only GitHub's web interface and Codemagic CI/CD.</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">Now</div>
+        <h3>Plus Two, and still building</h3>
+        <p>Balancing Humanities coursework with hours-long deep dives into whatever's next — security, mobile dev, or both at once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Shipped from a phone</span>
+      <h2>Projects</h2>
+      <p>Every one of these was built, debugged, and deployed without ever touching a laptop.</p>
+    </div>
+    <div class="proj-grid reveal">
+      <div class="proj-card">
+        <span class="tag">Parental Control</span>
+        <h3>NW Parental &amp; NW Child</h3>
+        <p>A two-app Android system for live camera/mic/screen streaming, GPS tracking, app blocking, screenshot capture and remote lock — with a parallel Flutter build using WebRTC and a pairing-code flow.</p>
+        <div class="stack"><span>Kotlin</span><span>Jetpack Compose</span><span>Flutter</span><span>Firebase</span><span>WebRTC</span></div>
+      </div>
+      <div class="proj-card">
+        <span class="tag">Streaming</span>
+        <h3>TG Streamer</h3>
+        <p>Streams Telegram files directly without downloading, using TDLib on a background isolate, a local proxy for large-file playback, and broad codec support including HEVC and MKV.</p>
+        <div class="stack"><span>Flutter</span><span>TDLib</span><span>media_kit</span><span>Codemagic</span></div>
+      </div>
+      <div class="proj-card">
+        <span class="tag">Security / Education</span>
+        <h3>NW CyberSafeHub</h3>
+        <p>A cybersecurity education site with a security tools arsenal, live CVE database, news feed, and a hash-secured admin panel — pure HTML/CSS/JS, hosted on GitHub Pages.</p>
+        <div class="stack"><span>HTML/CSS/JS</span><span>SHA-256</span><span>GitHub Pages</span></div>
+      </div>
+      <div class="proj-card">
+        <span class="tag">In progress</span>
+        <h3>Whatever's next</h3>
+        <p>Always mid-build on something — the next idea usually starts as a few hours of reading before a single line of code gets written.</p>
+        <div class="stack"><span>GitHub</span><span>Codemagic</span><span>Curiosity</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="toolkit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Working within the constraint</span>
+      <h2>Toolkit</h2>
+    </div>
+    <div class="kit-grid reveal">
+      <div class="kit-card">Kotlin</div>
+      <div class="kit-card">Jetpack Compose</div>
+      <div class="kit-card">Flutter / Dart</div>
+      <div class="kit-card">Firebase</div>
+      <div class="kit-card">GitHub (web editor)</div>
+      <div class="kit-card">Codemagic CI/CD</div>
+      <div class="kit-card">Android security tools</div>
+      <div class="kit-card">AI-assisted dev</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <h2>Let's connect</h2>
+      <p>Open to talking security, mobile dev, or how to build a full pipeline from just a phone.</p>
+      <div class="social-row">
+        <a class="btn btn-primary" href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">Instagram @nightwalker.ofc</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Mohammed Rinshan · NightWalker · Malappuram, Kerala, India</div>
+</footer>
+
+<script>
+  // Terminal typing effect (signature element)
+  const lines = [
+    { p: '~$ ', c: 'whoami', out: 'nightwalker' },
+    { p: '~$ ', c: 'device --specs', out: '4GB RAM / 64GB · unrooted' },
+    { p: '~$ ', c: 'laptop --status', out: 'not found. continuing anyway.' },
+    { p: '~$ ', c: 'goal --since "std 4"', out: 'become an ethical hacker' },
+    { p: '~$ ', c: 'build NW-Parental NW-Child', out: 'pushed to codemagic ✓' },
+  ];
+  const term = document.getElementById('term');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function renderStatic(){
+    term.innerHTML = lines.map(l =>
+      `<div class="line"><span class="prompt">${l.p}</span>${l.c}</div><div class="line out">${l.out}</div>`
+    ).join('');
+  }
+
+  async function typeLoop(){
+    if(reduced){ renderStatic(); return; }
+    while(true){
+      term.innerHTML = '';
+      for(const l of lines){
+        const lineEl = document.createElement('div');
+        lineEl.className = 'line';
+        const promptSpan = document.createElement('span');
+        promptSpan.className = 'prompt';
+        promptSpan.textContent = l.p;
+        lineEl.appendChild(promptSpan);
+        const textNode = document.createElement('span');
+        lineEl.appendChild(textNode);
+        const cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        lineEl.appendChild(cursor);
+        term.appendChild(lineEl);
+
+        for(let i=0;i<l.c.length;i++){
+          textNode.textContent += l.c[i];
+          await new Promise(r=>setTimeout(r, 28));
+        }
+        cursor.remove();
+        await new Promise(r=>setTimeout(r, 200));
+        const outEl = document.createElement('div');
+        outEl.className = 'line out';
+        outEl.textContent = l.out;
+        term.appendChild(outEl);
+        await new Promise(r=>setTimeout(r, 500));
+      }
+      await new Promise(r=>setTimeout(r, 1800));
+    }
+  }
+  typeLoop();
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
