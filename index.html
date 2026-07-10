@@ -3,386 +3,470 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NightWalker — Mohammed Rinshan</title>
-<meta name="description" content="Self-taught developer and aspiring ethical hacker, building Android &amp; Flutter apps entirely from a single phone. Malappuram, Kerala.">
+<title>NightWalker — After Hours</title>
+<meta name="description" content="Mohammed Rinshan (NightWalker) — self-taught security enthusiast and builder from Malappuram, Kerala, working entirely from a single phone.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0c111d;
-    --panel: #131a2b;
-    --panel-alt: #1a2338;
-    --hairline: rgba(234,238,247,0.09);
-    --text: #e9edf6;
-    --muted: #8b93ac;
-    --signal: #ffb454;
-    --signal-dim: rgba(255,180,84,0.14);
-    --path: #5eead4;
-    --path-dim: rgba(94,234,212,0.14);
-    --radius: 14px;
+    --void:#0a0e18;
+    --panel:#121729;
+    --panel-2:#0e1322;
+    --hair:#232b42;
+    --amber:#f2b84b;
+    --cyan:#6fe7dd;
+    --text:#eceff4;
+    --muted:#8993ab;
+    --muted-2:#5c6580;
   }
-  *{box-sizing:border-box;}
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
   html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
-  }
+
   body{
-    margin:0;
-    background:
-      radial-gradient(1100px 600px at 12% -10%, rgba(94,234,212,0.07), transparent 60%),
-      radial-gradient(900px 500px at 100% 10%, rgba(255,180,84,0.06), transparent 55%),
-      var(--bg);
+    background:var(--void);
     color:var(--text);
     font-family:'Inter', sans-serif;
     line-height:1.6;
-    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-  h1,h2,h3,.display{font-family:'Sora',sans-serif;}
-  .mono{font-family:'JetBrains Mono', monospace;}
-  a{color:inherit;}
-  :focus-visible{outline:2px solid var(--signal); outline-offset:3px; border-radius:4px;}
 
-  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  ::selection{ background:var(--amber); color:#12131a; }
 
-  /* NAV */
-  nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:rgba(12,17,29,0.75); border-bottom:1px solid var(--hairline);}
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
-  .brand{display:flex; align-items:center; gap:10px; font-family:'Sora',sans-serif; font-weight:700; letter-spacing:0.02em; font-size:1.05rem;}
-  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--signal); box-shadow:0 0 10px var(--signal); flex-shrink:0;}
-  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
-  nav a{text-decoration:none; color:var(--muted); font-size:0.92rem; font-weight:500; transition:color 0.2s;}
-  nav a:hover{color:var(--text);}
-  .nav-links{display:flex;}
-  @media (max-width:720px){ .nav-links{display:none;} }
+  a{ color:inherit; text-decoration:none; }
 
-  /* HERO */
-  .hero{padding:90px 0 70px; position:relative; overflow:hidden;}
-  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
-  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr; gap:48px;} }
+  .display{ font-family:'Space Grotesk', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
 
-  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--path); background:var(--path-dim); border:1px solid rgba(94,234,212,0.25); padding:6px 12px; border-radius:100px; margin-bottom:22px;}
-  .hero h1{font-size:clamp(2.1rem, 5vw, 3.4rem); font-weight:800; line-height:1.08; margin:0 0 20px; letter-spacing:-0.01em;}
-  .hero h1 .accent{color:var(--signal);}
-  .hero p.lede{color:var(--muted); font-size:1.08rem; max-width:52ch; margin:0 0 32px;}
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:10px; font-weight:600; font-size:0.94rem; text-decoration:none; transition:transform 0.15s, box-shadow 0.15s, background 0.15s; border:1px solid transparent;}
-  .btn-primary{background:var(--signal); color:#191308;}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(255,180,84,0.5);}
-  .btn-ghost{border-color:var(--hairline); color:var(--text); background:var(--panel);}
-  .btn-ghost:hover{border-color:rgba(94,234,212,0.4); transform:translateY(-2px);}
+  /* ---------- Starfield background ---------- */
+  .stars{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 90px 120px, rgba(255,255,255,.35), transparent),
+      radial-gradient(1.5px 1.5px at 160px 60px, rgba(255,255,255,.4), transparent),
+      radial-gradient(1px 1px at 230px 180px, rgba(255,255,255,.3), transparent),
+      radial-gradient(1.5px 1.5px at 300px 40px, rgba(255,255,255,.45), transparent),
+      radial-gradient(1px 1px at 40px 200px, rgba(255,255,255,.3), transparent);
+    background-repeat:repeat;
+    background-size:340px 240px;
+    opacity:.7;
+  }
 
-  .stat-strip{display:flex; gap:28px; margin-top:40px; flex-wrap:wrap;}
-  .stat-strip div{min-width:110px;}
-  .stat-strip .num{font-family:'Sora',sans-serif; font-weight:700; font-size:1.5rem; color:var(--text);}
-  .stat-strip .lbl{font-size:0.78rem; color:var(--muted); margin-top:2px;}
+  /* ---------- Nav ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 6vw;
+    backdrop-filter:blur(10px);
+    background:rgba(10,14,24,.55);
+    border-bottom:1px solid rgba(35,43,66,.6);
+  }
+  nav .brand{ font-weight:600; letter-spacing:.02em; font-size:15px; }
+  nav .brand .dot{ color:var(--amber); }
+  nav ul{ list-style:none; display:flex; gap:28px; }
+  nav ul li a{ font-size:13px; color:var(--muted); letter-spacing:.03em; transition:color .2s; }
+  nav ul li a:hover{ color:var(--amber); }
+  @media (max-width:640px){ nav ul{ gap:16px; } nav ul li:nth-child(2){ display:none; } }
 
-  /* PHONE TERMINAL - signature element */
-  .phone-wrap{display:flex; justify-content:center;}
+  section{ position:relative; z-index:1; padding:120px 6vw; max-width:1180px; margin:0 auto; }
+
+  /* ---------- Hero ---------- */
+  #hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-top:100px; padding-bottom:80px;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12.5px; color:var(--cyan); letter-spacing:.12em; text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:''; width:7px; height:7px; border-radius:50%;
+    background:var(--cyan); box-shadow:0 0 10px var(--cyan);
+  }
+  h1.name{
+    font-size:clamp(48px, 9vw, 108px);
+    line-height:.98; font-weight:700; letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  h1.name .glow{ color:var(--amber); }
+  .hero-tagline{
+    max-width:620px; font-size:clamp(16px,2vw,19px); color:var(--muted);
+    margin-bottom:36px;
+  }
+  .hero-tagline b{ color:var(--text); font-weight:500; }
+  .hero-facts{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+  .fact-chip{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    border:1px solid var(--hair); color:var(--muted);
+    padding:7px 14px; border-radius:999px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .fact-chip span.k{ color:var(--amber); }
+
+  .path-svg{ position:absolute; right:4vw; top:14%; opacity:.55; width:min(38vw,420px); }
+  @media (max-width:900px){ .path-svg{ display:none; } }
+
+  /* ---------- Section headers ---------- */
+  .sec-head{ margin-bottom:52px; }
+  .sec-eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--amber);
+    letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  .sec-title{ font-size:clamp(30px,4vw,44px); font-weight:600; letter-spacing:-.01em; max-width:760px; }
+
+  /* ---------- About ---------- */
+  #about{ border-top:1px solid var(--hair); }
+  .about-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:start; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:40px; } }
+  .lede{
+    font-size:clamp(19px,2.4vw,25px); font-weight:500; color:var(--text);
+    margin-bottom:24px; line-height:1.5;
+  }
+  .lede .amber{ color:var(--amber); }
+  .about-body p{ color:var(--muted); font-size:15.5px; margin-bottom:18px; max-width:60ch; }
+  .about-body strong{ color:var(--text); font-weight:600; }
+
+  .about-side{
+    border:1px solid var(--hair); background:var(--panel);
+    border-radius:16px; padding:28px;
+  }
+  .side-row{ display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid var(--hair); font-size:13.5px; }
+  .side-row:last-child{ border-bottom:none; }
+  .side-row .k{ color:var(--muted-2); font-family:'JetBrains Mono', monospace; }
+  .side-row .v{ color:var(--text); text-align:right; font-weight:500; }
+  .side-row .v a{ color:var(--cyan); }
+
+  /* ---------- Built section ---------- */
+  #built{ border-top:1px solid var(--hair); }
+  .built-layout{ display:grid; grid-template-columns:340px 1fr; gap:56px; align-items:start; }
+  @media (max-width:900px){ .built-layout{ grid-template-columns:1fr; } }
+
+  /* phone mockup */
+  .phone-wrap{ display:flex; justify-content:center; position:sticky; top:110px; }
+  @media (max-width:900px){ .phone-wrap{ position:static; margin-bottom:8px; } }
   .phone{
-    width:270px; border-radius:34px; padding:14px;
-    background:linear-gradient(160deg, #1c2540, #0f1522);
-    border:1px solid rgba(255,255,255,0.08);
-    box-shadow:0 30px 70px -20px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.03);
+    width:280px; height:568px; border-radius:38px;
+    background:linear-gradient(160deg, #1b2236, #0c1120);
+    border:2px solid #2a3350; padding:10px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.03);
+    position:relative;
   }
-  .phone .notch{width:60px; height:6px; border-radius:6px; background:rgba(255,255,255,0.12); margin:0 auto 10px;}
-  .screen{
-    background:#080b13; border-radius:20px; padding:18px 16px; height:400px;
-    border:1px solid rgba(255,180,84,0.15);
-    box-shadow:inset 0 0 40px rgba(255,180,84,0.05);
-    display:flex; flex-direction:column;
+  .phone-screen{
+    width:100%; height:100%; border-radius:28px; background:var(--panel-2);
+    overflow:hidden; position:relative; display:flex; flex-direction:column;
   }
-  .screen .bar{display:flex; gap:6px; margin-bottom:14px;}
-  .screen .bar span{width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.15);}
-  .term{font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--path); flex:1; overflow:hidden;}
-  .term .line{margin-bottom:9px; white-space:pre-wrap; word-break:break-word;}
-  .term .prompt{color:var(--signal);}
-  .cursor{display:inline-block; width:6px; height:12px; background:var(--signal); vertical-align:middle; animation:blink 1s steps(1) infinite;}
-  @keyframes blink{50%{opacity:0;}}
-  .term .out{color:var(--muted);}
-  .battery-tag{margin-top:14px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--muted);}
+  .notch{
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:110px; height:20px; background:#0c1120; border-radius:0 0 14px 14px; z-index:5;
+  }
+  .status-bar{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted);
+    padding:14px 20px 6px;
+  }
+  .status-bar .batt{ display:flex; align-items:center; gap:5px; }
+  .batt-icon{ width:16px; height:9px; border:1px solid var(--muted); border-radius:2px; position:relative; }
+  .batt-icon::after{ content:''; position:absolute; right:-3px; top:2px; width:2px; height:5px; background:var(--muted); border-radius:1px; }
+  .batt-icon::before{ content:''; position:absolute; inset:1px; width:65%; background:var(--cyan); border-radius:1px; }
 
-  section{padding:64px 0;}
-  .section-head{margin-bottom:36px;}
-  .section-head .kicker{font-family:'JetBrains Mono',monospace; font-size:0.76rem; color:var(--signal); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; display:block;}
-  .section-head h2{font-size:clamp(1.5rem,3vw,2rem); font-weight:700; margin:0;}
-  .section-head p{color:var(--muted); max-width:60ch; margin-top:10px;}
+  .home-label{ text-align:center; font-size:11px; color:var(--muted-2); margin:6px 0 4px; font-family:'JetBrains Mono', monospace; letter-spacing:.05em; }
 
-  /* fade-in on scroll */
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
-  .reveal.in{opacity:1; transform:none;}
+  .app-grid{
+    flex:1; display:grid; grid-template-columns:repeat(3, 1fr);
+    gap:18px 10px; padding:14px 18px; align-content:start;
+  }
+  .app-icon-btn{ background:none; border:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .app-icon{
+    width:52px; height:52px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--panel); border:1px solid var(--hair);
+    transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .app-icon svg{ width:24px; height:24px; stroke:var(--muted); transition:stroke .18s ease; }
+  .app-icon-btn span{ font-size:9.5px; color:var(--muted-2); font-family:'JetBrains Mono', monospace; text-align:center; line-height:1.25; max-width:64px; }
+  .app-icon-btn.active .app-icon{ border-color:var(--amber); box-shadow:0 0 0 1px rgba(242,184,75,.3), 0 8px 20px -6px rgba(242,184,75,.35); transform:translateY(-2px); }
+  .app-icon-btn.active .app-icon svg{ stroke:var(--amber); }
+  .app-icon-btn.active span{ color:var(--amber); }
+  .app-icon-btn:hover .app-icon{ border-color:var(--muted-2); }
 
-  /* ABOUT */
-  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
-  @media (max-width:780px){.about-grid{grid-template-columns:1fr;}}
-  .about-grid p{color:#c7cde0; margin:0 0 16px;}
-  .fact-card{background:var(--panel); border:1px solid var(--hairline); border-radius:var(--radius); padding:22px;}
-  .fact-card + .fact-card{margin-top:14px;}
-  .fact-card .k{font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--path); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.06em;}
-  .fact-card .v{font-size:0.96rem; color:var(--text);}
+  .dock{
+    margin-top:auto; display:flex; justify-content:center; padding:10px 0 16px;
+  }
+  .dock .home-bar{ width:100px; height:4px; border-radius:3px; background:var(--hair); }
 
-  /* TIMELINE */
-  .timeline{position:relative; padding-left:26px; border-left:1px solid var(--hairline);}
-  .tl-item{position:relative; padding-bottom:34px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{content:''; position:absolute; left:-31px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 4px var(--signal-dim);}
-  .tl-item .yr{font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--signal); margin-bottom:4px;}
-  .tl-item h3{margin:0 0 6px; font-size:1.05rem; font-weight:600;}
-  .tl-item p{margin:0; color:var(--muted); font-size:0.94rem; max-width:60ch;}
+  /* detail panel */
+  .app-detail{
+    border:1px solid var(--hair); background:var(--panel);
+    border-radius:18px; padding:36px; min-height:420px;
+  }
+  .app-detail .tag{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:11.5px;
+    color:var(--cyan); border:1px solid rgba(111,231,221,.3); background:rgba(111,231,221,.06);
+    padding:4px 11px; border-radius:999px; margin-bottom:16px; letter-spacing:.04em;
+  }
+  .app-detail h3{ font-size:clamp(22px,3vw,30px); font-weight:600; margin-bottom:14px; }
+  .app-detail .desc{ color:var(--muted); font-size:15px; max-width:64ch; margin-bottom:22px; }
+  .app-detail .desc strong{ color:var(--text); font-weight:600; }
 
-  /* PROJECTS */
-  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
-  @media (max-width:780px){.proj-grid{grid-template-columns:1fr;}}
-  .proj-card{background:var(--panel); border:1px solid var(--hairline); border-radius:var(--radius); padding:24px; transition:border-color 0.2s, transform 0.2s;}
-  .proj-card:hover{border-color:rgba(255,180,84,0.35); transform:translateY(-3px);}
-  .proj-card .tag{display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--path); background:var(--path-dim); padding:3px 9px; border-radius:100px; margin-bottom:14px;}
-  .proj-card h3{margin:0 0 8px; font-size:1.12rem;}
-  .proj-card p{color:var(--muted); font-size:0.92rem; margin:0 0 16px;}
-  .stack{display:flex; flex-wrap:wrap; gap:8px;}
-  .stack span{font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--muted); border:1px solid var(--hairline); padding:3px 8px; border-radius:6px;}
+  .feature-menu{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    background:var(--panel-2); border:1px solid var(--hair); border-radius:12px;
+    padding:18px 20px; color:var(--muted); overflow-x:auto;
+  }
+  .feature-menu .fm-title{ color:var(--amber); margin-bottom:10px; letter-spacing:.03em; }
+  .feature-menu .fm-row{ white-space:pre; padding:2.5px 0; }
+  .feature-menu .fm-row .idx{ color:var(--cyan); }
+  .feature-menu .fm-row .fname{ color:var(--text); }
 
-  /* TOOLKIT */
-  .kit-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px;}
-  .kit-card{background:var(--panel-alt); border:1px solid var(--hairline); border-radius:12px; padding:16px; text-align:center; font-size:0.88rem; color:#d3d8e8;}
+  .tech-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+  .tech-tags span{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted-2);
+    border:1px solid var(--hair); padding:5px 11px; border-radius:8px;
+  }
 
-  /* CONTACT */
-  .contact-box{background:linear-gradient(135deg, var(--panel), var(--panel-alt)); border:1px solid var(--hairline); border-radius:20px; padding:44px; text-align:center;}
-  .contact-box h2{margin:0 0 12px;}
-  .contact-box p{color:var(--muted); max-width:50ch; margin:0 auto 28px;}
-  .social-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--hair); padding:60px 6vw 40px;
+    display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;
+    position:relative; z-index:1;
+  }
+  footer .fname{ font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:600; }
+  footer .fname .amber{ color:var(--amber); }
+  footer .socials{ display:flex; gap:18px; margin-top:6px; }
+  footer .socials a{ font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--muted); border:1px solid var(--hair); padding:8px 16px; border-radius:999px; transition:.2s; }
+  footer .socials a:hover{ color:var(--amber); border-color:var(--amber); }
+  footer .copy{ color:var(--muted-2); font-size:12px; margin-top:18px; }
 
-  footer{border-top:1px solid var(--hairline); padding:28px 0; text-align:center; color:var(--muted); font-size:0.82rem;}
+  @media (max-width:640px){ section{ padding:90px 6vw; } }
 </style>
 </head>
 <body>
 
+<div class="stars"></div>
+
 <nav>
-  <div class="wrap">
-    <div class="brand"><span class="dot"></span> NightWalker</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#journey">Journey</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#toolkit">Toolkit</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
+  <div class="brand">NightWalker<span class="dot">.</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#built">Built</a></li>
+    <li><a href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">Instagram</a></li>
+  </ul>
 </nav>
 
-<header class="hero">
-  <div class="wrap hero-grid">
+<!-- HERO -->
+<section id="hero">
+  <svg class="path-svg" viewBox="0 0 400 500" fill="none">
+    <path d="M40 480 C 100 420, 40 380, 100 320 S 200 260, 160 200 S 260 140, 220 80 S 320 40, 300 10"
+      stroke="#6fe7dd" stroke-width="1.5" stroke-dasharray="2 10" stroke-linecap="round"/>
+    <circle cx="40" cy="480" r="4" fill="#f2b84b"/>
+    <circle cx="100" cy="320" r="3" fill="#6fe7dd"/>
+    <circle cx="160" cy="200" r="3" fill="#6fe7dd"/>
+    <circle cx="220" cy="80" r="3" fill="#6fe7dd"/>
+    <circle cx="300" cy="10" r="4" fill="#f2b84b"/>
+  </svg>
+
+  <span class="eyebrow">Malappuram, Kerala &middot; India</span>
+  <h1 class="name display">Night<span class="glow">Walker</span></h1>
+  <p class="hero-tagline">
+    I'm <b>Mohammed Rinshan</b> — a Class 12 Humanities student teaching myself
+    cybersecurity one late night at a time, and building whatever I need along the way,
+    all from a single phone.
+  </p>
+  <div class="hero-facts">
+    <div class="fact-chip"><span class="k">device</span> 1 phone, no laptop</div>
+    <div class="fact-chip"><span class="k">specs</span> 4GB RAM / 64GB storage</div>
+    <div class="fact-chip"><span class="k">since</span> Class 4</div>
+    <div class="fact-chip"><span class="k">status</span> still learning, every day</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head">
+    <span class="sec-eyebrow">// about</span>
+    <h2 class="sec-title display">Everything here was figured out the hard way — no shortcuts, no laptop, just a phone and a lot of hours.</h2>
+  </div>
+
+  <div class="about-grid">
     <div>
-      <span class="eyebrow">● online from a single android device</span>
-      <h1>Building in the dark.<br>Shipping <span class="accent">anyway.</span></h1>
-      <p class="lede">I'm Mohammed Rinshan — known online as <strong>NightWalker</strong>. Plus Two humanities student from Malappuram, Kerala, teaching myself ethical hacking and app development on a 4GB RAM phone, with no laptop and no shortcuts.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">View GitHub →</a>
-        <a class="btn btn-ghost" href="#projects">See what I've built</a>
-      </div>
-      <div class="stat-strip">
-        <div><div class="num">10+ yrs</div><div class="lbl">chasing the dream, since std. 4</div></div>
-        <div><div class="num">4GB / 64GB</div><div class="lbl">the entire dev rig</div></div>
-        <div><div class="num">0</div><div class="lbl">laptops owned</div></div>
+      <p class="lede">Whatever I get curious about, I go <span class="amber">all in</span> — sometimes for hours at a stretch, until I actually understand it.</p>
+      <div class="about-body">
+        <p>That curiosity has a fixed point: <strong>ethical hacking</strong>. It's a dream that goes back to Class 4, and it's the one subject I've never stopped coming back to since. Somewhere between then and now it turned from a fascination into the thing I'm actually building a future around.</p>
+        <p>The catch is that I've never had a laptop. Everything — every tool, every experiment, every project — has run on a single unrooted Android phone with <strong>4GB of RAM and 64GB of storage</strong>. It's slower than it should be, but it hasn't stopped the work.</p>
+        <p>Outside security research, I like <strong>building things</strong> — apps and websites, mostly, picking up whatever tools and skills a project needs as I go. The five projects below are what's come out of that so far.</p>
+        <p>Online, I go by <strong>NightWalker</strong> — same handle on Instagram, <a href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener" style="color:var(--cyan)">@nightwalker.ofc</a>.</p>
       </div>
     </div>
 
+    <div class="about-side mono">
+      <div class="side-row"><span class="k">location</span><span class="v">Malappuram, Kerala, IN</span></div>
+      <div class="side-row"><span class="k">education</span><span class="v">Plus Two &middot; Humanities</span></div>
+      <div class="side-row"><span class="k">focus</span><span class="v">Ethical Hacking / Security</span></div>
+      <div class="side-row"><span class="k">builds_with</span><span class="v">1 phone, AI-assisted tooling</span></div>
+      <div class="side-row"><span class="k">handle</span><span class="v"><a href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">@nightwalker.ofc</a></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT -->
+<section id="built">
+  <div class="sec-head">
+    <span class="sec-eyebrow">// built</span>
+    <h2 class="sec-title display">Five projects, one home screen.</h2>
+  </div>
+
+  <div class="built-layout">
     <div class="phone-wrap">
       <div class="phone">
-        <div class="notch"></div>
-        <div class="screen">
-          <div class="bar"><span></span><span></span><span></span></div>
-          <div class="term" id="term"></div>
+        <div class="phone-screen">
+          <div class="notch"></div>
+          <div class="status-bar">
+            <span>23:47</span>
+            <div class="batt">100%<span class="batt-icon"></span></div>
+          </div>
+          <div class="home-label">NIGHTWALKER'S PHONE</div>
+          <div class="app-grid" id="appGrid">
+            <!-- icons injected by JS -->
+          </div>
+          <div class="dock"><div class="home-bar"></div></div>
         </div>
-        <div class="battery-tag">// one phone. no limits.</div>
       </div>
     </div>
-  </div>
-</header>
 
-<section id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Who's behind the terminal</span>
-      <h2>Self-taught, phone-only, still shipping.</h2>
-    </div>
-    <div class="about-grid">
-      <div class="reveal">
-        <p>Since 4th standard, the goal hasn't changed: become an ethical hacker. There was never a laptop to make that easier — just curiosity, patience, and whatever an unrooted Android phone would allow.</p>
-        <p>That constraint became a habit. I spend hours at a stretch going deep on one topic before moving to the next — security tooling, Android internals, Flutter, Kotlin — learning by doing rather than by having the "right" setup.</p>
-        <p>Today that same phone runs security tools, drives GitHub's web editor, and triggers Codemagic builds — the full pipeline for real, working apps, end to end.</p>
-      </div>
-      <div class="reveal">
-        <div class="fact-card"><div class="k">Base</div><div class="v">Malappuram, Kerala, India</div></div>
-        <div class="fact-card"><div class="k">Currently</div><div class="v">Plus Two — Humanities</div></div>
-        <div class="fact-card"><div class="k">Setup</div><div class="v">Android phone · 4GB RAM · 64GB storage · unrooted</div></div>
-        <div class="fact-card"><div class="k">Workflow</div><div class="v">GitHub (web) + Codemagic CI/CD — zero PC dependency</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="journey">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">The long way in</span>
-      <h2>How it started, how it's going</h2>
-    </div>
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <div class="yr">Standard 4</div>
-        <h3>The dream starts</h3>
-        <p>First encounter with the idea of "hacking" — no resources, no roadmap, just a decision that stuck for over a decade.</p>
-      </div>
-      <div class="tl-item">
-        <div class="yr">Since then</div>
-        <h3>Learning without the "right" gear</h3>
-        <p>Studying security concepts and running tools on an unrooted phone, piecing together knowledge without formal training or a PC.</p>
-      </div>
-      <div class="tl-item">
-        <div class="yr">Recently</div>
-        <h3>From learning to shipping</h3>
-        <p>Started building real, working Android and Flutter apps — TG Streamer, NW CyberSafeHub, and the NW Parental / NW Child system — using only GitHub's web interface and Codemagic CI/CD.</p>
-      </div>
-      <div class="tl-item">
-        <div class="yr">Now</div>
-        <h3>Plus Two, and still building</h3>
-        <p>Balancing Humanities coursework with hours-long deep dives into whatever's next — security, mobile dev, or both at once.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Shipped from a phone</span>
-      <h2>Projects</h2>
-      <p>Every one of these was built, debugged, and deployed without ever touching a laptop.</p>
-    </div>
-    <div class="proj-grid reveal">
-      <div class="proj-card">
-        <span class="tag">Parental Control</span>
-        <h3>NW Parental &amp; NW Child</h3>
-        <p>A two-app Android system for live camera/mic/screen streaming, GPS tracking, app blocking, screenshot capture and remote lock — with a parallel Flutter build using WebRTC and a pairing-code flow.</p>
-        <div class="stack"><span>Kotlin</span><span>Jetpack Compose</span><span>Flutter</span><span>Firebase</span><span>WebRTC</span></div>
-      </div>
-      <div class="proj-card">
-        <span class="tag">Streaming</span>
-        <h3>TG Streamer</h3>
-        <p>Streams Telegram files directly without downloading, using TDLib on a background isolate, a local proxy for large-file playback, and broad codec support including HEVC and MKV.</p>
-        <div class="stack"><span>Flutter</span><span>TDLib</span><span>media_kit</span><span>Codemagic</span></div>
-      </div>
-      <div class="proj-card">
-        <span class="tag">Security / Education</span>
-        <h3>NW CyberSafeHub</h3>
-        <p>A cybersecurity education site with a security tools arsenal, live CVE database, news feed, and a hash-secured admin panel — pure HTML/CSS/JS, hosted on GitHub Pages.</p>
-        <div class="stack"><span>HTML/CSS/JS</span><span>SHA-256</span><span>GitHub Pages</span></div>
-      </div>
-      <div class="proj-card">
-        <span class="tag">In progress</span>
-        <h3>Whatever's next</h3>
-        <p>Always mid-build on something — the next idea usually starts as a few hours of reading before a single line of code gets written.</p>
-        <div class="stack"><span>GitHub</span><span>Codemagic</span><span>Curiosity</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="toolkit">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Working within the constraint</span>
-      <h2>Toolkit</h2>
-    </div>
-    <div class="kit-grid reveal">
-      <div class="kit-card">Kotlin</div>
-      <div class="kit-card">Jetpack Compose</div>
-      <div class="kit-card">Flutter / Dart</div>
-      <div class="kit-card">Firebase</div>
-      <div class="kit-card">GitHub (web editor)</div>
-      <div class="kit-card">Codemagic CI/CD</div>
-      <div class="kit-card">Android security tools</div>
-      <div class="kit-card">AI-assisted dev</div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-box reveal">
-      <h2>Let's connect</h2>
-      <p>Open to talking security, mobile dev, or how to build a full pipeline from just a phone.</p>
-      <div class="social-row">
-        <a class="btn btn-primary" href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn btn-ghost" href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">Instagram @nightwalker.ofc</a>
-      </div>
+    <div class="app-detail" id="appDetail">
+      <!-- detail injected by JS -->
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Mohammed Rinshan · NightWalker · Malappuram, Kerala, India</div>
+  <div class="fname display">Mohammed Rinshan <span class="amber">/ NightWalker</span></div>
+  <p style="color:var(--muted); font-size:14px; max-width:50ch;">
+    Self-taught, one phone, always learning. Open to conversations about security, or about building on hardware everyone says is "too small" for it.
+  </p>
+  <div class="socials">
+    <a href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">Instagram — @nightwalker.ofc</a>
+  </div>
+  <div class="copy">NightWalker &middot; Malappuram, Kerala &middot; 2026</div>
 </footer>
 
 <script>
-  // Terminal typing effect (signature element)
-  const lines = [
-    { p: '~$ ', c: 'whoami', out: 'nightwalker' },
-    { p: '~$ ', c: 'device --specs', out: '4GB RAM / 64GB · unrooted' },
-    { p: '~$ ', c: 'laptop --status', out: 'not found. continuing anyway.' },
-    { p: '~$ ', c: 'goal --since "std 4"', out: 'become an ethical hacker' },
-    { p: '~$ ', c: 'build NW-Parental NW-Child', out: 'pushed to codemagic ✓' },
-  ];
-  const term = document.getElementById('term');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function renderStatic(){
-    term.innerHTML = lines.map(l =>
-      `<div class="line"><span class="prompt">${l.p}</span>${l.c}</div><div class="line out">${l.out}</div>`
-    ).join('');
+const apps = [
+  {
+    id:"osint",
+    name:"NW OSINT\nTool",
+    tag:"Reconnaissance",
+    title:"NW OSINT Tool",
+    desc:"An all-in-one open-source-intelligence console, built around a single menu instead of a dozen scattered scripts. One entry point covers usernames, IPs, domains, emails, phone numbers, networks, and more — every lookup logged and exportable afterward.",
+    icon:'<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+    features:[
+      ["01","Username OSINT","Search 30+ platforms in parallel"],
+      ["02","IP Address OSINT","Geolocate, ASN, abuse reputation"],
+      ["03","Domain / Website OSINT","WHOIS, DNS, SSL expiry, redirects"],
+      ["04","Email OSINT","Breach check, Gravatar, MX lookup"],
+      ["05","Phone Number OSINT","60+ countries, E.164, WA/TG check"],
+      ["06","Network OSINT","IP, DNS leak, speed, open ports"],
+      ["07","Google Dorking","Auto-generate dork queries"],
+      ["08","Website Fingerprint","CMS, frameworks, CDN, SSL"],
+      ["09","Wayback Machine","View archived site snapshots"],
+      ["10","GitHub OSINT","Profile, repos, gists, orgs"],
+      ["11","Shodan Lookup","Exposed devices & CVEs"],
+      ["12","DNS Brute Force","100+ subdomain wordlist scan"],
+      ["13","Hash Identifier","Identify & crack MD5/SHA hashes"],
+      ["14","MAC Address Lookup","Vendor & manufacturer from MAC"],
+      ["15","URL Expander","Unshorten & trace redirect chain"],
+      ["16","Banner Grabber","Grab service banners from ports"],
+      ["17","Search History","Browse & search past queries"],
+      ["18","View Reports","Browse all saved results"],
+      ["19","Export Reports to ZIP","Bundle all reports into one file"],
+      ["20","API Key Manager","Add/update/delete API keys"]
+    ],
+    tech:["Reconnaissance","CLI-style menu","Report export"]
+  },
+  {
+    id:"telegram",
+    name:"NW Telegram\nStreaming",
+    tag:"Android / Client",
+    title:"NW Telegram File Streaming",
+    desc:"A custom build of Telegram's open-source client, rebuilt at the smali/DEX level so files can stream directly instead of waiting on a full download first — alongside interface cleanup like removing forced update prompts.",
+    icon:'<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>',
+    tech:["Smali / DEX editing","MT Manager","Telegram open-source base"]
+  },
+  {
+    id:"cybersafehub",
+    name:"NW\nCyberSafeHub",
+    tag:"Security Awareness",
+    title:"NW CyberSafeHub",
+    desc:"A hub for CVE awareness — surfacing details on known vulnerabilities in a way that's useful whether you're an ethical hacker tracking new disclosures or a normal user trying to understand what a CVE actually means for you.",
+    icon:'<path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/>',
+    tech:["CVE tracking","Plain-language breakdowns","For hackers & everyday users"]
+  },
+  {
+    id:"voting",
+    name:"NW Electronic\nVoting",
+    tag:"Web Platform",
+    title:"NW Electronic Voting Website",
+    desc:"An online voting platform where anyone can request admin permission to run their own election and manage it end-to-end — built so organizations, clubs, or classes can conduct real elections digitally instead of on paper.",
+    icon:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+    tech:["Admin-approved elections","Online ballots","Multi-election support"]
+  },
+  {
+    id:"parentchild",
+    name:"NW Parent &\nChild App",
+    tag:"Parental Monitoring",
+    title:"NW Parent and Child App",
+    desc:"A paired pair of apps for student safety: the Parent app gives a parent visibility into their child's device activity, while the Child app runs on the student's phone and sends the relevant details back to the parent side.",
+    icon:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    tech:["Two-app system","Parent dashboard","Student device reporting"]
   }
+];
 
-  async function typeLoop(){
-    if(reduced){ renderStatic(); return; }
-    while(true){
-      term.innerHTML = '';
-      for(const l of lines){
-        const lineEl = document.createElement('div');
-        lineEl.className = 'line';
-        const promptSpan = document.createElement('span');
-        promptSpan.className = 'prompt';
-        promptSpan.textContent = l.p;
-        lineEl.appendChild(promptSpan);
-        const textNode = document.createElement('span');
-        lineEl.appendChild(textNode);
-        const cursor = document.createElement('span');
-        cursor.className = 'cursor';
-        lineEl.appendChild(cursor);
-        term.appendChild(lineEl);
+const grid = document.getElementById('appGrid');
+const detail = document.getElementById('appDetail');
 
-        for(let i=0;i<l.c.length;i++){
-          textNode.textContent += l.c[i];
-          await new Promise(r=>setTimeout(r, 28));
-        }
-        cursor.remove();
-        await new Promise(r=>setTimeout(r, 200));
-        const outEl = document.createElement('div');
-        outEl.className = 'line out';
-        outEl.textContent = l.out;
-        term.appendChild(outEl);
-        await new Promise(r=>setTimeout(r, 500));
-      }
-      await new Promise(r=>setTimeout(r, 1800));
-    }
+function renderIcons(activeId){
+  grid.innerHTML = apps.map(a => `
+    <button class="app-icon-btn ${a.id===activeId?'active':''}" data-id="${a.id}">
+      <div class="app-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${a.icon}</svg></div>
+      <span>${a.name.replace('\n','<br>')}</span>
+    </button>
+  `).join('');
+  grid.querySelectorAll('.app-icon-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      renderIcons(btn.dataset.id);
+      renderDetail(btn.dataset.id);
+    });
+  });
+}
+
+function renderDetail(id){
+  const a = apps.find(x=>x.id===id);
+  let featuresHtml = '';
+  if(a.features){
+    featuresHtml = `
+      <div class="feature-menu">
+        <div class="fm-title">$ nw-osint --menu</div>
+        ${a.features.map(f=>`<div class="fm-row">[<span class="idx">${f[0]}</span>] <span class="fname">${f[1].padEnd(22,' ')}</span> ${f[2]}</div>`).join('')}
+        <div class="fm-row">[<span class="idx">00</span>] <span class="fname">Exit</span></div>
+      </div>
+    `;
   }
-  typeLoop();
+  detail.innerHTML = `
+    <span class="tag">${a.tag}</span>
+    <h3 class="display">${a.title}</h3>
+    <p class="desc">${a.desc}</p>
+    ${featuresHtml}
+    <div class="tech-tags">${a.tech.map(t=>`<span>${t}</span>`).join('')}</div>
+  `;
+}
 
-  // scroll reveal
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+renderIcons(apps[0].id);
+renderDetail(apps[0].id);
 </script>
 
 </body>
