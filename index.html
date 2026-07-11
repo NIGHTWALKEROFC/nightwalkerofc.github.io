@@ -69,7 +69,7 @@
   nav ul{ list-style:none; display:flex; gap:28px; }
   nav ul li a{ font-size:13px; color:var(--muted); letter-spacing:.03em; transition:color .2s; }
   nav ul li a:hover{ color:var(--amber); }
-  @media (max-width:640px){ nav ul{ gap:16px; } nav ul li:nth-child(2){ display:none; } }
+  @media (max-width:640px){ nav ul{ gap:14px; } nav ul li:nth-child(2), nav ul li:nth-child(3){ display:none; } }
 
   section{ position:relative; z-index:1; padding:120px 6vw; max-width:1180px; margin:0 auto; }
 
@@ -235,9 +235,10 @@
   #connect .sec-title{ max-width:600px; }
 
   .connect-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; max-width:900px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; max-width:1080px; margin:0 auto;
   }
-  @media (max-width:760px){ .connect-grid{ grid-template-columns:1fr; } }
+  @media (max-width:900px){ .connect-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:560px){ .connect-grid{ grid-template-columns:1fr; } }
 
   .connect-card{
     display:flex; flex-direction:column; align-items:flex-start; gap:14px;
@@ -254,7 +255,27 @@
   .connect-card .cc-handle{ font-family:'Space Grotesk', sans-serif; font-size:17px; font-weight:600; }
   .connect-card .cc-sub{ font-size:13px; color:var(--muted); }
 
-  /* ---------- Footer ---------- */
+  /* ---------- Skills ---------- */
+  #skills{ border-top:1px solid var(--hair); }
+  .skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:32px; }
+  @media (max-width:800px){ .skills-grid{ grid-template-columns:1fr; } }
+  .skill-panel{ border:1px solid var(--hair); background:var(--panel); border-radius:16px; padding:28px; }
+  .skill-panel .sp-label{ font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+  .skill-panel.hands-on .sp-label{ color:var(--amber); }
+  .skill-panel.theory .sp-label{ color:var(--cyan); }
+  .skill-panel .sp-sub{ font-size:13px; color:var(--muted); margin-bottom:18px; }
+  .skill-list{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .skill-list li{ display:flex; align-items:flex-start; gap:10px; font-size:14.5px; color:var(--text); }
+  .skill-list li::before{ content:''; width:6px; height:6px; border-radius:50%; margin-top:7px; flex-shrink:0; }
+  .skill-panel.hands-on .skill-list li::before{ background:var(--amber); }
+  .skill-panel.theory .skill-list li::before{ background:var(--cyan); }
+  .skill-list li span{ color:var(--muted); font-size:13px; display:block; margin-top:2px; }
+
+  .skills-note{
+    border:1px dashed var(--hair); border-radius:14px; padding:20px 24px;
+    color:var(--muted); font-size:14.5px; max-width:760px;
+  }
+  .skills-note strong{ color:var(--text); }
   footer{
     border-top:1px solid var(--hair); padding:48px 6vw 36px;
     display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;
@@ -275,6 +296,7 @@
   <div class="brand">NightWalker<span class="dot">.</span></div>
   <ul>
     <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#built">Built</a></li>
     <li><a href="#connect">Connect</a></li>
     <li><a href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">GitHub</a></li>
@@ -337,6 +359,50 @@
   </div>
 </section>
 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head">
+    <span class="sec-eyebrow">// skills</span>
+    <h2 class="sec-title display">What I actually know, split honestly by what I've touched vs. what I've studied.</h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-panel hands-on">
+      <div class="sp-label">Hands-on</div>
+      <div class="sp-sub">Things I run, build, and test myself — all within the limits of one unrooted phone.</div>
+      <ul class="skill-list">
+        <li>APK reverse engineering<span>Decompiling and rebuilding Android apps with MT Manager</span></li>
+        <li>Smali / DEX-level editing<span>Reading and patching app behavior at the bytecode level</span></li>
+        <li>Androguard<span>Static analysis of Android packages</span></li>
+        <li>Android security research<span>Strong grasp of Android's security model and common vulnerability classes — comfortable identifying flaws and understanding exploitation logic through hands-on device work</span></li>
+        <li>Linux<span>Comfortable working in Linux environments and using command-line tools</span></li>
+        <li>OSINT tooling &amp; recon<span>Building and using lookup tools across usernames, domains, IPs, and more</span></li>
+        <li>Mobile-first workflow<span>Getting real security work done without a laptop</span></li>
+      </ul>
+    </div>
+
+    <div class="skill-panel theory">
+      <div class="sp-label">Studied / Theory</div>
+      <div class="sp-sub">Knowledge built through deep, self-directed research — not yet backed by hands-on lab work due to hardware limits.</div>
+      <ul class="skill-list">
+        <li>Social engineering<span>Strong grasp of the human-side attack techniques and how they're defended against</span></li>
+        <li>iOS security<span>Working knowledge of iOS's security architecture, including the concepts behind both zero-click and click-based exploit chains</span></li>
+        <li>Payload &amp; exploit concepts<span>Including zero-click attack theory</span></li>
+        <li>Offensive security fundamentals<span>Broad reading across attack methodology and defense</span></li>
+        <li>Cyber awareness &amp; teaching<span>Able to explain security concepts simply, for hackers and non-technical people alike</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="skills-note mono" style="margin-bottom:14px;">
+    <strong>General approach:</strong> given any system, my instinct is to study how it's built until I understand where it could fail — that's the pattern behind everything else on this list.
+  </div>
+
+  <div class="skills-note mono">
+    <strong>Beyond security:</strong> I research randomly — whatever topic catches my attention, I'll go deep on it for hours, no fixed field required. Security is the constant; everything else rotates.
+  </div>
+</section>
+
 <!-- BUILT -->
 <section id="built">
   <div class="sec-head">
@@ -376,6 +442,13 @@
   </div>
 
   <div class="connect-grid">
+    <a class="connect-card" href="mailto:rinshan602@gmail.com?subject=Let's%20Connect" target="_blank" rel="noopener">
+      <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="cc-label">Email</div>
+      <div class="cc-handle">Get in touch</div>
+      <div class="cc-sub">rinshan602@gmail.com</div>
+    </a>
+
     <a class="connect-card" href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">
       <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
       <div class="cc-label">Code &amp; projects</div>
