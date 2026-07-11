@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NightWalker — After Hours</title>
-<meta name="description" content="Mohammed Rinshan (NightWalker) — self-taught security enthusiast and builder from Malappuram, Kerala, working entirely from a single phone.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>NightWalker | Mohammed Rinshan — Self-Taught Ethical Hacking &amp; Security Portfolio</title>
+<meta name="description" content="Mohammed Rinshan, aka NightWalker — a self-taught ethical hacking enthusiast from Malappuram, Kerala, building Android security tools, OSINT software, and more, entirely from one phone.">
+<meta name="keywords" content="NightWalker, Mohammed Rinshan, nightwalker.ofc, rinsh.aannn, ethical hacker Kerala, ethical hacking portfolio, Android security, OSINT tool, Malappuram hacker">
+<meta name="author" content="Mohammed Rinshan (NightWalker)">
+<link rel="canonical" href="https://nightwalkerofc.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="NightWalker | Mohammed Rinshan — Ethical Hacking &amp; Security Portfolio">
+<meta property="og:description" content="Self-taught ethical hacking enthusiast from Malappuram, Kerala — building Android security tools and OSINT software entirely from one phone.">
+<meta property="og:url" content="https://nightwalkerofc.github.io/">
+<meta property="og:site_name" content="NightWalker">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NightWalker | Mohammed Rinshan — Ethical Hacking &amp; Security Portfolio">
+<meta name="twitter:description" content="Self-taught ethical hacking enthusiast from Malappuram, Kerala — building Android security tools and OSINT software entirely from one phone.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohammed Rinshan",
+  "alternateName": "NightWalker",
+  "url": "https://nightwalkerofc.github.io/",
+  "sameAs": [
+    "https://github.com/NIGHTWALKEROFC",
+    "https://instagram.com/nightwalker.ofc",
+    "https://instagram.com/rinsh.aannn",
+    "https://www.linkedin.com/in/muhammed-rinshan-56b2b73a1",
+    "https://x.com/NIGHTWALKER009"
+  ],
+  "jobTitle": "Self-taught Ethical Hacking Enthusiast",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Malappuram",
+    "addressRegion": "Kerala",
+    "addressCountry": "IN"
+  },
+  "email": "mailto:rinshan602@gmail.com"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,7 +61,7 @@
 
   *{box-sizing:border-box; margin:0; padding:0;}
 
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden; max-width:100%;}
 
   body{
     background:var(--void);
@@ -31,6 +69,9 @@
     font-family:'Inter', sans-serif;
     line-height:1.6;
     overflow-x:hidden;
+    max-width:100%;
+    width:100%;
+    position:relative;
   }
 
   ::selection{ background:var(--amber); color:#12131a; }
@@ -173,7 +214,7 @@
   .phone-wrap{ display:flex; justify-content:center; position:sticky; top:110px; }
   @media (max-width:900px){ .phone-wrap{ position:static; margin-bottom:8px; } }
   .phone{
-    width:280px; height:568px; border-radius:38px;
+    width:280px; max-width:82vw; height:568px; border-radius:38px;
     background:linear-gradient(160deg, #1b2236, #0c1120);
     border:2px solid #2a3350; padding:10px;
     box-shadow:0 30px 80px -20px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.03);
@@ -258,10 +299,10 @@
   #connect .sec-title{ max-width:600px; }
 
   .connect-grid{
-    display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; max-width:920px; margin:0 auto;
   }
-  @media (max-width:900px){ .connect-grid{ grid-template-columns:repeat(2, 1fr); } }
-  @media (max-width:560px){ .connect-grid{ grid-template-columns:1fr; } }
+  @media (max-width:760px){ .connect-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:520px){ .connect-grid{ grid-template-columns:1fr; } }
 
   .connect-card{
     display:flex; flex-direction:column; align-items:flex-start; gap:14px;
@@ -332,6 +373,26 @@
   footer .copy{ color:var(--muted-2); font-size:12px; margin-top:10px; }
 
   @media (max-width:640px){ section{ padding:90px 6vw; } }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{
+    opacity:0; transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.16,.8,.3,1), transform .7s cubic-bezier(.16,.8,.3,1);
+  }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  /* ---------- Hero intro animation ---------- */
+  @keyframes fadeInUp{ from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:translateY(0);} }
+  #hero .eyebrow{ opacity:0; animation:fadeInUp .6s ease forwards; animation-delay:.1s; }
+  #hero .hero-tagline{ opacity:0; animation:fadeInUp .7s ease forwards; animation-delay:1.15s; }
+  #hero .hero-facts{ opacity:0; animation:fadeInUp .7s ease forwards; animation-delay:1.35s; }
+  #hero .path-svg{ opacity:0; animation:fadeInUp 1s ease forwards; animation-delay:1.5s; }
+
+  .type-cursor{
+    display:inline-block; color:var(--amber); margin-left:2px;
+    animation:blinkCursor 1s step-end infinite;
+  }
+  @keyframes blinkCursor{ 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 </style>
 </head>
 <body>
@@ -367,7 +428,7 @@
   </svg>
 
   <span class="eyebrow">Malappuram, Kerala &middot; India</span>
-  <h1 class="name display">Night<span class="glow">Walker</span></h1>
+  <h1 class="name display"><span id="typedName"></span><span class="type-cursor">|</span></h1>
   <p class="hero-tagline">
     I'm <b>Mohammed Rinshan</b> — a Class 12 Humanities student teaching myself
     cybersecurity one late night at a time, and building whatever I need along the way,
@@ -383,12 +444,12 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <span class="sec-eyebrow">// about</span>
     <h2 class="sec-title display">Everything here was figured out the hard way — no shortcuts, no laptop, just a phone and a lot of hours.</h2>
   </div>
 
-  <div class="about-grid">
+  <div class="about-grid reveal">
     <div>
       <p class="lede">Whatever I get curious about, I go <span class="amber">all in</span> — sometimes for hours at a stretch, until I actually understand it.</p>
       <div class="about-body">
@@ -406,19 +467,21 @@
       <div class="side-row"><span class="k">builds_with</span><span class="v">1 phone, AI-assisted tooling</span></div>
       <div class="side-row"><span class="k">handle</span><span class="v"><a href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">@nightwalker.ofc</a></span></div>
       <div class="side-row"><span class="k">github</span><span class="v"><a href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">@NIGHTWALKEROFC</a></span></div>
+      <div class="side-row"><span class="k">linkedin</span><span class="v"><a href="https://www.linkedin.com/in/muhammed-rinshan-56b2b73a1" target="_blank" rel="noopener">Muhammed Rinshan</a></span></div>
+      <div class="side-row"><span class="k">x</span><span class="v"><a href="https://x.com/NIGHTWALKER009" target="_blank" rel="noopener">@NIGHTWALKER009</a></span></div>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <span class="sec-eyebrow">// skills</span>
     <h2 class="sec-title display">What I actually know, split honestly by what I've touched vs. what I've studied.</h2>
   </div>
 
-  <div class="skills-grid">
-    <div class="skill-panel hands-on">
+  <div class="skills-grid reveal">
+    <div class="skill-panel hands-on reveal">
       <div class="sp-label">Hands-on</div>
       <div class="sp-sub">Things I run, build, and test myself — all within the limits of one unrooted phone.</div>
       <ul class="skill-list">
@@ -435,7 +498,7 @@
       </ul>
     </div>
 
-    <div class="skill-panel theory">
+    <div class="skill-panel theory reveal">
       <div class="sp-label">Studied / Theory</div>
       <div class="sp-sub">Knowledge built through deep, self-directed research — not yet backed by hands-on lab work due to hardware limits.</div>
       <ul class="skill-list">
@@ -451,24 +514,24 @@
     </div>
   </div>
 
-  <div class="skills-note mono" style="margin-bottom:14px;">
+  <div class="skills-note mono reveal" style="margin-bottom:14px;">
     <strong>General approach:</strong> given any system, my instinct is to study how it's built until I understand where it could fail — that's the pattern behind everything else on this list.
   </div>
 
-  <div class="skills-note mono">
+  <div class="skills-note mono reveal">
     <strong>Beyond security:</strong> I research randomly — whatever topic catches my attention, I'll go deep on it for hours, no fixed field required. Security is the constant; everything else rotates.
   </div>
 </section>
 
 <!-- BUILT -->
 <section id="built">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <span class="sec-eyebrow">// built</span>
     <h2 class="sec-title display">Five projects, one home screen.</h2>
   </div>
 
-  <div class="built-layout">
-    <div class="phone-wrap">
+  <div class="built-layout reveal">
+    <div class="phone-wrap reveal">
       <div class="phone">
         <div class="phone-screen">
           <div class="notch"></div>
@@ -485,7 +548,7 @@
       </div>
     </div>
 
-    <div class="app-detail" id="appDetail">
+    <div class="app-detail reveal" id="appDetail">
       <!-- detail injected by JS -->
     </div>
   </div>
@@ -493,45 +556,45 @@
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <span class="sec-eyebrow">// services</span>
     <h2 class="sec-title display">Things I can help with — all of it free, none of it paid.</h2>
   </div>
 
   <span class="free-badge">&#9733; Every service below is free of cost — not a paid service</span>
 
-  <div class="services-grid">
-    <div class="service-card">
+  <div class="services-grid reveal">
+    <div class="service-card reveal">
       <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
       <h4>Account recovery</h4>
       <p>Help getting back into a locked or compromised account of yours.</p>
     </div>
 
-    <div class="service-card">
+    <div class="service-card reveal">
       <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
       <h4>Teaching &amp; awareness</h4>
       <p>Explaining hacking concepts and cyber awareness — plus other subjects I've studied, on request.</p>
     </div>
 
-    <div class="service-card">
+    <div class="service-card reveal">
       <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></div>
       <h4>Account protection guidance</h4>
       <p>Practical steps to harden your accounts before something goes wrong.</p>
     </div>
 
-    <div class="service-card">
+    <div class="service-card reveal">
       <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
       <h4>Android / iOS security guidance</h4>
       <p>Tightening up your device's security settings on either platform.</p>
     </div>
 
-    <div class="service-card">
+    <div class="service-card reveal">
       <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 1 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
       <h4>If you've been hacked</h4>
       <p>Guidance on defending your accounts and recovering your data safely after a breach.</p>
     </div>
 
-    <div class="service-card">
+    <div class="service-card reveal">
       <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
       <h4>General Android guidance</h4>
       <p>Questions about Android, apps, or getting more out of your device — happy to help.</p>
@@ -541,38 +604,52 @@
 
 <!-- CONNECT -->
 <section id="connect">
-  <div class="sec-head">
+  <div class="sec-head reveal">
     <span class="sec-eyebrow">// connect</span>
     <h2 class="sec-title display">Let's connect — send a message, follow along, or check the code.</h2>
   </div>
 
-  <div class="connect-grid">
-    <a class="connect-card" href="mailto:rinshan602@gmail.com?subject=Let's%20Connect" target="_blank" rel="noopener">
+  <div class="connect-grid reveal">
+    <a class="connect-card reveal" href="mailto:rinshan602@gmail.com?subject=Let's%20Connect" target="_blank" rel="noopener">
       <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
       <div class="cc-label">Email</div>
       <div class="cc-handle">Get in touch</div>
       <div class="cc-sub">rinshan602@gmail.com</div>
     </a>
 
-    <a class="connect-card" href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">
+    <a class="connect-card reveal" href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">
       <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
       <div class="cc-label">Code &amp; projects</div>
       <div class="cc-handle">GitHub</div>
       <div class="cc-sub">@NIGHTWALKEROFC</div>
     </a>
 
-    <a class="connect-card" href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">
+    <a class="connect-card reveal" href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">
       <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
       <div class="cc-label">Main account</div>
       <div class="cc-handle">Instagram</div>
       <div class="cc-sub">@nightwalker.ofc</div>
     </a>
 
-    <a class="connect-card" href="https://instagram.com/rinsh.aannn" target="_blank" rel="noopener">
+    <a class="connect-card reveal" href="https://instagram.com/rinsh.aannn" target="_blank" rel="noopener">
       <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
       <div class="cc-label">Personal account</div>
       <div class="cc-handle">Instagram</div>
       <div class="cc-sub">@rinsh.aannn</div>
+    </a>
+
+    <a class="connect-card reveal" href="https://www.linkedin.com/in/muhammed-rinshan-56b2b73a1" target="_blank" rel="noopener">
+      <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+      <div class="cc-label">Professional</div>
+      <div class="cc-handle">LinkedIn</div>
+      <div class="cc-sub">Muhammed Rinshan</div>
+    </a>
+
+    <a class="connect-card reveal" href="https://x.com/NIGHTWALKER009" target="_blank" rel="noopener">
+      <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg></div>
+      <div class="cc-label">Thoughts &amp; updates</div>
+      <div class="cc-handle">X</div>
+      <div class="cc-sub">@NIGHTWALKER009</div>
     </a>
   </div>
 </section>
@@ -701,6 +778,41 @@ navToggle.addEventListener('click', ()=> navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a=>{
   a.addEventListener('click', ()=> navLinks.classList.remove('open'));
 });
+
+// Scroll-reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold:0.12, rootMargin:"0px 0px -40px 0px" });
+revealEls.forEach(el=> revealObserver.observe(el));
+
+// Hero name typewriter
+(function typeHeroName(){
+  const el = document.getElementById('typedName');
+  const part1 = "Night", part2 = "Walker";
+  let i = 0;
+  const t1 = setInterval(()=>{
+    el.textContent = part1.slice(0, i+1);
+    i++;
+    if(i > part1.length){
+      clearInterval(t1);
+      const glowSpan = document.createElement('span');
+      glowSpan.className = 'glow';
+      el.appendChild(glowSpan);
+      let j = 0;
+      const t2 = setInterval(()=>{
+        glowSpan.textContent = part2.slice(0, j+1);
+        j++;
+        if(j > part2.length) clearInterval(t2);
+      }, 85);
+    }
+  }, 85);
+})();
 </script>
 
 </body>
