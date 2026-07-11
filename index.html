@@ -280,12 +280,17 @@
   .feature-menu{
     font-family:'JetBrains Mono', monospace; font-size:12.5px;
     background:var(--panel-2); border:1px solid var(--hair); border-radius:12px;
-    padding:18px 20px; color:var(--muted); overflow-x:auto;
+    padding:8px 20px; color:var(--muted);
   }
-  .feature-menu .fm-title{ color:var(--amber); margin-bottom:10px; letter-spacing:.03em; }
-  .feature-menu .fm-row{ white-space:pre; padding:2.5px 0; }
-  .feature-menu .fm-row .idx{ color:var(--cyan); }
-  .feature-menu .fm-row .fname{ color:var(--text); }
+  .feature-menu .fm-title{ color:var(--amber); margin:10px 0 4px; letter-spacing:.03em; }
+  .feature-menu .fm-row{
+    display:grid; grid-template-columns:36px 1fr; column-gap:12px;
+    padding:11px 0; border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .feature-menu .fm-row:last-child{ border-bottom:none; }
+  .feature-menu .fm-row .idx{ color:var(--cyan); grid-row:1 / span 2; padding-top:1px; }
+  .feature-menu .fm-row .fname{ grid-column:2; color:var(--text); font-weight:600; }
+  .feature-menu .fm-row .fdesc{ grid-column:2; color:var(--muted); font-size:11.5px; margin-top:2px; }
 
   .tech-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
   .tech-tags span{
@@ -455,7 +460,7 @@
       <div class="about-body">
         <p>That curiosity has a fixed point: <strong>ethical hacking</strong>. It's a dream that goes back to Class 4, and it's the one subject I've never stopped coming back to since. Somewhere between then and now it turned from a fascination into the thing I'm actually building a future around.</p>
         <p>The catch is that I've never had a laptop. Everything — every tool, every experiment, every project — has run on a single unrooted Android phone with <strong>4GB of RAM and 64GB of storage</strong>. It's slower than it should be, but it hasn't stopped the work.</p>
-        <p>Outside security research, I like <strong>building things</strong> — apps and websites, mostly, picking up whatever tools and skills a project needs as I go. The five projects below are what's come out of that so far.</p>
+        <p>Outside security research, I like <strong>building things</strong> — apps and websites, mostly, working alongside AI tools to bring ideas to life despite having no laptop. The five projects below are what's come out of that so far.</p>
         <p>Online, I go by <strong>NightWalker</strong> — same handle on Instagram, <a href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener" style="color:var(--cyan)">@nightwalker.ofc</a>.</p>
       </div>
     </div>
@@ -464,6 +469,7 @@
       <div class="side-row"><span class="k">location</span><span class="v">Malappuram, Kerala, IN</span></div>
       <div class="side-row"><span class="k">education</span><span class="v">Plus Two &middot; Humanities</span></div>
       <div class="side-row"><span class="k">focus</span><span class="v">Ethical Hacking / Security</span></div>
+      <div class="side-row"><span class="k">languages</span><span class="v">English, Malayalam</span></div>
       <div class="side-row"><span class="k">builds_with</span><span class="v">1 phone, AI-assisted tooling</span></div>
       <div class="side-row"><span class="k">handle</span><span class="v"><a href="https://instagram.com/nightwalker.ofc" target="_blank" rel="noopener">@nightwalker.ofc</a></span></div>
       <div class="side-row"><span class="k">github</span><span class="v"><a href="https://github.com/NIGHTWALKEROFC" target="_blank" rel="noopener">@NIGHTWALKEROFC</a></span></div>
@@ -755,8 +761,8 @@ function renderDetail(id){
     featuresHtml = `
       <div class="feature-menu">
         <div class="fm-title">$ nw-osint --menu</div>
-        ${a.features.map(f=>`<div class="fm-row">[<span class="idx">${f[0]}</span>] <span class="fname">${f[1].padEnd(22,' ')}</span> ${f[2]}</div>`).join('')}
-        <div class="fm-row">[<span class="idx">00</span>] <span class="fname">Exit</span></div>
+        ${a.features.map(f=>`<div class="fm-row"><span class="idx">[${f[0]}]</span><span class="fname">${f[1]}</span><span class="fdesc">${f[2]}</span></div>`).join('')}
+        <div class="fm-row"><span class="idx">[00]</span><span class="fname">Exit</span></div>
       </div>
     `;
   }
