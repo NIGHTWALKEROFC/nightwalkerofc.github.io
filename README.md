@@ -10,7 +10,7 @@
 [![Location](https://img.shields.io/badge/Malappuram-Kerala,%20India-6fe7dd?style=for-the-badge)](#)
 [![Built With](https://img.shields.io/badge/Built%20with-1%20Phone-important?style=for-the-badge)](#)
 
-[Portfolio](https://nightwalkerofc.github.io/) · [LinkedIn](https://www.linkedin.com/in/mohammed-rinshan-56b2b73a1) · [Instagram](https://instagram.com/nightwalker.ofc) · [X](https://x.com/NIGHTWALKER009)
+[Portfolio](https://nightwalkerofc.github.io/) · [LinkedIn](https://www.linkedin.com/in/mohammed-rinshan-56b2b73a1) · [Instagram](https://www.instagram.com/nightwalker.ofc) · [X](https://x.com/NIGHTWALKER009)
 
 </div>
 
@@ -104,8 +104,8 @@ Reach out via [email](mailto:rinshan602@gmail.com) or Instagram.
 
 [![Email](https://img.shields.io/badge/Email-rinshan602%40gmail.com-f2b84b?style=flat-square)](mailto:rinshan602@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-NIGHTWALKEROFC-181717?style=flat-square&logo=github)](https://github.com/NIGHTWALKEROFC)
-[![Instagram](https://img.shields.io/badge/Instagram-nightwalker.ofc-E4405F?style=flat-square&logo=instagram)](https://instagram.com/nightwalker.ofc)
-[![Instagram](https://img.shields.io/badge/Instagram-rinsh.aannn-E4405F?style=flat-square&logo=instagram)](https://instagram.com/rinsh.aannn)
+[![Instagram](https://img.shields.io/badge/Instagram-nightwalker.ofc-E4405F?style=flat-square&logo=instagram)](https://www.instagram.com/nightwalker.ofc)
+[![Instagram](https://img.shields.io/badge/Instagram-rinsh.aannn-E4405F?style=flat-square&logo=instagram)](https://www.instagram.com/rinsh.aannn)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Mohammed%20Rinshan-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/mohammed-rinshan-56b2b73a1)
 [![X](https://img.shields.io/badge/X-NIGHTWALKER009-000000?style=flat-square&logo=x)](https://x.com/NIGHTWALKER009)
 
